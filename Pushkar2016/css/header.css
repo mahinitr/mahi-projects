@@ -16,10 +16,10 @@ body {
 }
 #label-header{
 	float: left;
-	font-family: Bee,Serif;
+	font-family: "Comic Sans", Tahoma, Serif;
 	font-size: 30px;
 	padding:30px;
-	color : #274e13;
+	color : 0#274e13;
 }
 #logo-left, #logo-right{
 	margin-left:30px;
@@ -27,7 +27,7 @@ body {
 	width : 100px;	heigh : 100px;	
 }
 
-nav {
+#navigation-1 nav {
   margin-top: 0px;  padding: 10px;
   text-align: center;  font-family: Raleway;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
@@ -38,7 +38,7 @@ nav {
 .link-1 {
   transition: 0.4s;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
   padding: 0 10px;
   margin: 0 10px;
@@ -46,5 +46,21 @@ nav {
 .link-1:hover {
   background-color: #ffffff;
   color: #EEA200;
-  padding: 24px 10px;
+  padding: 10px 10px;
+}
+
+* { margin:0; padding: 0; list-style: none; }
+
+#page { 
+	margin: 0 auto; 
+	width: 800px; 
+	background: #fff; 
+	padding:2px; 
+	margin-top: 2px; 
+	margin-bottom: 5px; 
+	border: 1px solid #777; 
+	box-shadow: #999 1px 1px 3px; 
+}
+#page img{
+	width: 800px;	
 }
