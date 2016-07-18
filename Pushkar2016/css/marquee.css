@@ -1,0 +1,58 @@
+
+.mar-content {
+	display: block;
+	width: 600px;
+	background: rgb(215, 215, 215);	
+	overflow: hidden;
+	margin: 0 auto;
+	float : left;
+	height:50px;
+}
+
+.mar-container-1 {
+	width: 600px;
+	background: white;
+	float: left;
+	display: inline-block;
+	overflow: hidden;
+	box-sizing: border-box;
+	height: 45px;
+	position: relative;
+	cursor: pointer;
+}
+
+.mar-label{
+	font-size: 15px;
+	font-weight: normal;
+	height: 25x;
+	line-height: 25px;
+	
+}
+.marquee, *[class^="marquee"] {
+	display: inline-block;
+	white-space: nowrap;
+	position:absolute;
+}
+
+.marquee{
+  margin-left: 25%;
+}
+
+.marquee-content-items{
+  display: inline-block;
+  padding: 0px;
+  margin: 0;
+  height: 45px;
+  position: relative;
+}
+
+.marquee-content-items li{
+  display: inline-block;
+  line-height: 35px;
+  color: blue;
+}
+
+.marquee-content-items li:after{
+	content: "|";
+	margin: 0 1em;
+}
