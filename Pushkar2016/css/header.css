@@ -99,3 +99,41 @@ div.desc {
 	position: relative;
 	margin: 0 auto;
 }
+
+.fb-wrapper-inner{
+	border-radius: 25px;
+    background: #5175C0;
+	color: #ffffff;
+	font-size: 15px;
+    
+    width: 900px;
+    height: 90px; 	
+	float: left;
+	margin: 0 auto;
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+.fb-img{
+	float:left;
+	margin:20px;
+}
+.fb-content{
+	float:left;
+	margin-top:35px;
+}
+.fb-content a{
+	margin-left:10px;
+}
+
+
+.footer{
+	width:100%;
+	font-size:15px;
+	position: relative;
+	margin: 0 auto;
+	margin-top:10px;
+	margin-bottom: 20px;
+	height:100px;
+	background: #5e5957;
+	float:left;
+}
