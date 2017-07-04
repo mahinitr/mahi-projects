@@ -1,0 +1,15 @@
+Web-Scrape tool will extract the data from provided website as input:
+
+This tool reads from input file(which contains the lines, each line can be 
+street address, city, state, or country and lattitue, longitude coordinates 
+of corners of th area, extract the data of all houses and writes to CSV file & Mysql DB.
+
+Running the tool:
+(Preferred softwares: python 2.7, BeautilfulSoup 4 and mysql-server)
+Fill the below required details in db.json
+1. Database access details like db_url, username, password, db_name, db_table
+2. Provide path of input file. (better to move the input file to the tool directoty)
+3. Provide path of output file. (better to give only file name, so that output file 
+   will created under tool directory)
+4. Go to cmd/shell, cd to directory web-scrape
+5. run "python scrape-engine.py"

@@ -1,0 +1,106 @@
+{
+"orders" : [
+    {
+        "Id": 1,
+        "OrderProperties": {
+            "Name" : "Jhon",
+            "City": "Sydney",
+            "Purpose": "Travel",
+            "Income": {
+                "GrossAnnual": 50000
+            }
+        }
+    },
+    {
+        "Id": 2,
+        "OrderProperties": {
+            "Name" : "Richard",
+            "City": "Sydney",
+            "Purpose": "House",
+            "Income": {
+                "GrossAnnual": 50000
+            }
+        }
+    },
+    {
+        "Id": 3,
+        "OrderProperties": {
+            "Name" : "James",
+            "City": "Sydney",
+            "Purpose": "Car",
+            "Income": {
+                "GrossAnnual": 60000
+            }
+        }
+    },
+    {
+        "Id": 4,
+        "OrderProperties": {
+            "Name" : "James",
+            "City": "Melbourne",
+            "Purpose": "House",
+            "Income": {
+                "GrossAnnual": 60000,
+                "CTC" : {
+                    "BasicSalary" : 20000
+                }
+            }
+        }
+    },
+    {
+        "Id": 5,
+        "OrderProperties": {
+            "Name" : "Richard",
+            "City": "Melbourne",
+            "Purpose": "Travel",
+            "Income": {
+                "GrossAnnual": 45000
+            }
+        }
+    },
+    {
+        "Id": 6,
+        "OrderProperties": {
+            "Name" : "James",
+            "City": "Melbourne",
+            "Purpose": "House",
+            "Income": {
+                "GrossAnnual": 45000
+            }
+        }
+    },
+    {
+        "Id": 7,
+        "OrderProperties": {
+            "Name" : "Richard",
+            "City": "Melbourne",
+            "Purpose": "House",
+            "Income": {
+                "GrossAnnual": 40000
+            }
+        }
+    },
+    {
+        "Id": 8,
+        "OrderProperties": {
+            "Name" : "Richard",
+            "City": "Melbourne",
+            "Purpose": "Car",
+            "Income": {
+                "GrossAnnual": 40000
+            }
+        }
+    },
+    {
+        "Id": 9,
+        "OrderProperties": {
+            "Name" : "Richard",
+            "City": "Sydney",
+            "Purpose": "Car",
+            "Income": {
+                "GrossAnnual": 70000
+            }
+        }
+    }
+]
+}

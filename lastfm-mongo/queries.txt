@@ -1,0 +1,126 @@
+For each of the simple & complex queries, the commands are given as below.
+
+
+Target Queries  - Simple query 
+==============================
+
+• given a user id, find all artists the user’s friends listen. 
+    python query_mongo.py ARTISTS_OF_FRIENDS_OF_USER "<userID>"
+        Ex: python query_mongo.py ARTISTS_OF_FRIENDS_OF_USER "52"
+	
+	This will take userID as input and provides the artists of the friends of the given user.
+	1. Searches for userID in the users collection (uses index userID)
+	2. Reads the friends' IDs list from found doc
+	3. Iterates for each friendID and searches for it in users collection(index - userID)
+	4. Reads the artist_id & names for each and club them and returns the list of all artists.
+
+• given an artist name, find the most recent 10 tags that have been assigned to it. 
+    python query_mongo.py RECENT_10_TAGS_OF_ARTIST "<artist_name>"
+        Ex: python query_mongo.py RECENT_10_TAGS_OF_ARTIST "Diary of Dreams"
+
+	1. Searches for artist_name in artists collection using index artist_name.
+	2. Reads the tags of the found doc.
+	3. Iterates through each tag and store the tagId & timestamp in memory for each using a dict.
+	4. Sort the dict of tagIds by the timestamps
+	5. Return the tagName & tagId of top 10 of the dict.
+	
+• given an artist name, find the top 10 users based on their respective listening counts of this artist. Display both the user id and the listening count 
+    python query_mongo.py RECENT_10_ARTISTS_TAGGED "<artist_name>"
+        Ex: python query_mongo.py RECENT_10_ARTISTS_TAGGED "Diary of Dreams"
+
+	1. Searches for artist_name in artists collection using index artist_name.
+	2. Reads the users from found the doc
+	3. Iterates thriugh each, store userID & weight in dict.
+	4. Sort the dict by the weights
+	5. Return the userID & weight of top 10 the dict
+		
+• given a user id, find the most recent 10 artists the user has assigned tag to.
+    python query_mongo.py RECENT_10_ARTISTS_TAGGED "userID"
+        Ex: python query_mongo.py RECENT_10_ARTISTS_TAGGED "52"
+
+	1. Searches for userID in the users collection (uses index userID)
+	2. Reads the artists of the found doc.
+	3. Iterates through each artist and store the artist & timestamps in memory for each using a dict.
+	4. Sort the dict of artists by the timestamps
+	5. Return the artist_id & artist_name of top 10 of the dict
+	
+		
+		
+Complex queries 
+============================== 
+ 
+• find the top 5 artists ranked by the number of users listening to it :
+    python query_mongo.py TOP_5_ARTISTS_BY_NUM_USERS
+
+	1. PyMongo Query the aggregation for sortig no_of_users, limiting the results to 5
+	2. Read the artist_ids from found the results
+	3. Return the artist_id & artist_name of each.
+		
+	
+• given an artist name, find the top 20 tags assigned to it. The tags are ranked by the number of times it has been assigned to this artist
+    python query_mongo.py TOP_20_TAGS_BY_NUM_ASSIGNS "<artists_name>"
+        Ex: python query_mongo.py TOP_20_TAGS_BY_NUM_ASSIGNS "Diary of Dreams"
+		
+	1. Searches for artist_name in artists collection using index artist_name.
+	2. read the tags from the found doc.
+	3. Iterate through each tag and keep counting the no of times it it has been tagged to the given artist
+	4. Store all the tags & count in a dict
+	5. Sort the dict by count
+	6. Return the top 20 of the dict
+
+• given a user id, find the top 5 artists listened by his friends but not him. We rank artists bythe sum of friends’ listening counts of the artist. 
+    python query_mongo.py TOP_5_ARTISTS_OF_HIS_FRIENDS "userID"
+        Ex: python query_mongo.py TOP_5_ARTISTS_OF_HIS_FRIENDS "52"
+
+	1. Searches for userID in the users collection (uses index userID)
+	2. Read the friends IDs from the found doc
+	3. itearate through each friendID and query for its artists names uisng userID index
+	4. Store the artist_name & sum of listening counts by each friend in a dict
+	5. Sort the dict by listening counts
+	6. return the top 5 from the dict
+		
+• given an artist name, find the top 5 similar artists. Here similarity between a pair of artists is defined by the number of unique users that have listened both. The higher the number, the more similar the two artists are.
+    python query_mongo.py TOP_5_SIMILAR_ARTISTS "<artists_name>"
+        Ex:python query_mongo.py TOP_5_SIMILAR_ARTISTS "London After Midnight"
+
+	1. Searches for artist_name in artists collection using index artist_name.
+	2. Read the unique_users from the found doc
+	3. Query for the artists that have been listened by the users using index (users.userID)
+	4. Store the map of artists to users listened it
+	5. Iterate through each item of this map and find the number of common users between unique_users and item's users list.
+	6. Store the dict of artists to no of common users and sort it.
+	7. Return the top 5 of the sorted dict.
+	
+	
+===============================================================================================================
+	
+	
+	   python query_mongo.py ARTISTS_OF_FRIENDS_OF_USER "<userID>"
+        Ex: python query_mongo.py ARTISTS_OF_FRIENDS_OF_USER "52"
+		artists_of_friends_of_user took 0.731657981873 milliseconds
+
+    python query_mongo.py RECENT_10_TAGS_OF_ARTIST "<artist_name>"
+        Ex: python query_mongo.py RECENT_10_TAGS_OF_ARTIST "Diary of Dreams"
+		recent_10_tags_of_artist took 0.0377810001373 milliseconds
+
+    python query_mongo.py TOP_10_USERS_BY_WEIGHT "<artist_name>"
+        Ex: python query_mongo.py TOP_10_USERS_BY_WEIGHT "Diary of Dreams"
+		top_10_users_weight took 0.00227785110474 milliseconds
+
+    python query_mongo.py RECENT_10_ARTISTS_TAGGED "userID"
+        Ex: python query_mongo.py RECENT_10_ARTISTS_TAGGED "52"
+		recent_10_artists_tagged took 0.005854845047 milliseconds
+
+    python query_mongo.py TOP_5_ARTISTS_BY_NUM_USERS
+
+    python query_mongo.py TOP_20_TAGS_BY_NUM_ASSIGNS "<artists_name>"
+        Ex: python query_mongo.py TOP_20_TAGS_BY_NUM_ASSIGNS "Diary of Dreams"
+		top_20_tags_by_num_assigns took 0.00926399230957 milliseconds
+
+    python query_mongo.py TOP_5_ARTISTS_OF_HIS_FRIENDS "userID"
+        Ex: python query_mongo.py TOP_5_ARTISTS_OF_HIS_FRIENDS "52"
+		top_5_artists_of_his_friends took 0.0882151126862 milliseconds
+
+    python query_mongo.py TOP_5_SIMILAR_ARTISTS "<artists_name>"
+        Ex:python query_mongo.py TOP_5_SIMILAR_ARTISTS "London After Midnight"
+		top_5_similar_artists took 1.22542691231 milliseconds

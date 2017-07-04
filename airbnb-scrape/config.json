@@ -1,0 +1,9 @@
+{
+  "db_url" : "localhost",
+  "username" : "root",
+  "password" : "root",
+  "database" : "airbnb",
+  "db_table" : "houses",
+  "output_file" : "output.csv",
+  "input_file" : "input.txt"
+}

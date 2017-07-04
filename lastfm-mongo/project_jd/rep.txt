@@ -1,0 +1,17 @@
+. For each query (or sub query), report execution
+statistics such as: which index is used, how many documents are examined to
+answer this query
+
+
+
+
+--describe the schema with respect to the particular system. Your
+description should include information at “table” and “column” level as well
+as possible primary keys/row keys and secondary indexes. You should show
+sample data based on schema. For instance, you may show sample documents
+of each MongoDB collection
+
+
+describe implementation of each target query. You may include
+the entire shell query command, or show pseudo code. You should also run
+sample queries and describe the execution statistics for each sample query

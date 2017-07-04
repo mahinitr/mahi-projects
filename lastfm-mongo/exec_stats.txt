@@ -1,0 +1,341 @@
+db.artists.find({"artistID":"1436"}).explain("executionStats")
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "lastfm.artists",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"artistID" : {
+				"$eq" : "1436"
+			}
+		},
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"artistID" : 1
+				},
+				"indexName" : "artistID_1",
+				"isMultiKey" : false,
+				"direction" : "forward",
+				"indexBounds" : {
+					"artistID" : [
+						"[\"1436\", \"1436\"]"
+					]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 1,
+		"executionTimeMillis" : 0,
+		"totalKeysExamined" : 1,
+		"totalDocsExamined" : 1,
+		"executionStages" : {
+			"stage" : "FETCH",
+			"nReturned" : 1,
+			"executionTimeMillisEstimate" : 0,
+			"works" : 2,
+			"advanced" : 1,
+			"needTime" : 0,
+			"needFetch" : 0,
+			"saveState" : 0,
+			"restoreState" : 0,
+			"isEOF" : 1,
+			"invalidates" : 0,
+			"docsExamined" : 1,
+			"alreadyHasObj" : 0,
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"nReturned" : 1,
+				"executionTimeMillisEstimate" : 0,
+				"works" : 2,
+				"advanced" : 1,
+				"needTime" : 0,
+				"needFetch" : 0,
+				"saveState" : 0,
+				"restoreState" : 0,
+				"isEOF" : 1,
+				"invalidates" : 0,
+				"keyPattern" : {
+					"artistID" : 1
+				},
+				"indexName" : "artistID_1",
+				"isMultiKey" : false,
+				"direction" : "forward",
+				"indexBounds" : {
+					"artistID" : [
+						"[\"1436\", \"1436\"]"
+					]
+				},
+				"keysExamined" : 1,
+				"dupsTested" : 0,
+				"dupsDropped" : 0,
+				"seenInvalidated" : 0,
+				"matchTested" : 0
+			}
+		}
+	},
+	"serverInfo" : {
+		"host" : "mahi-ubuntu-14",
+		"port" : 27017,
+		"version" : "3.0.12",
+		"gitVersion" : "33934938e0e95d534cebbaff656cde916b9c3573"
+	},
+	"ok" : 1
+}
+
+
+
+
+==========================================================================
+db.users.find({"userID":"345"}).explain("executionStats")
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "lastfm.users",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"userID" : {
+				"$eq" : "345"
+			}
+		},
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"userID" : 1
+				},
+				"indexName" : "userID_1",
+				"isMultiKey" : false,
+				"direction" : "forward",
+				"indexBounds" : {
+					"userID" : [
+						"[\"345\", \"345\"]"
+					]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 1,
+		"executionTimeMillis" : 69,
+		"totalKeysExamined" : 1,
+		"totalDocsExamined" : 1,
+		"executionStages" : {
+			"stage" : "FETCH",
+			"nReturned" : 1,
+			"executionTimeMillisEstimate" : 0,
+			"works" : 3,
+			"advanced" : 1,
+			"needTime" : 0,
+			"needFetch" : 1,
+			"saveState" : 1,
+			"restoreState" : 1,
+			"isEOF" : 1,
+			"invalidates" : 0,
+			"docsExamined" : 1,
+			"alreadyHasObj" : 0,
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"nReturned" : 1,
+				"executionTimeMillisEstimate" : 0,
+				"works" : 1,
+				"advanced" : 1,
+				"needTime" : 0,
+				"needFetch" : 0,
+				"saveState" : 1,
+				"restoreState" : 1,
+				"isEOF" : 1,
+				"invalidates" : 0,
+				"keyPattern" : {
+					"userID" : 1
+				},
+				"indexName" : "userID_1",
+				"isMultiKey" : false,
+				"direction" : "forward",
+				"indexBounds" : {
+					"userID" : [
+						"[\"345\", \"345\"]"
+					]
+				},
+				"keysExamined" : 1,
+				"dupsTested" : 0,
+				"dupsDropped" : 0,
+				"seenInvalidated" : 0,
+				"matchTested" : 0
+			}
+		}
+	},
+	"serverInfo" : {
+		"host" : "mahi-ubuntu-14",
+		"port" : 27017,
+		"version" : "3.0.12",
+		"gitVersion" : "33934938e0e95d534cebbaff656cde916b9c3573"
+	},
+	"ok" : 1
+}
+> 
+
+
+===========================================================================================================
+
+db.tags.find({"tagIDD":"544"}).explain("executionStats")
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "lastfm.tags",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"tagIDD" : {
+				"$eq" : "544"
+			}
+		},
+		"winningPlan" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"tagIDD" : {
+					"$eq" : "544"
+				}
+			},
+			"direction" : "forward"
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 0,
+		"executionTimeMillis" : 3,
+		"totalKeysExamined" : 0,
+		"totalDocsExamined" : 11946,
+		"executionStages" : {
+			"stage" : "COLLSCAN",
+			"filter" : {
+				"tagIDD" : {
+					"$eq" : "544"
+				}
+			},
+			"nReturned" : 0,
+			"executionTimeMillisEstimate" : 0,
+			"works" : 11948,
+			"advanced" : 0,
+			"needTime" : 11947,
+			"needFetch" : 0,
+			"saveState" : 93,
+			"restoreState" : 93,
+			"isEOF" : 1,
+			"invalidates" : 0,
+			"direction" : "forward",
+			"docsExamined" : 11946
+		}
+	},
+	"serverInfo" : {
+		"host" : "mahi-ubuntu-14",
+		"port" : 27017,
+		"version" : "3.0.12",
+		"gitVersion" : "33934938e0e95d534cebbaff656cde916b9c3573"
+	},
+	"ok" : 1
+}
+> 
+===========================================================================================================
+
+db.artists.find({"users.userID":"16"}).explain("executionStats")
+{
+	"queryPlanner" : {
+		"plannerVersion" : 1,
+		"namespace" : "lastfm.artists",
+		"indexFilterSet" : false,
+		"parsedQuery" : {
+			"users.userID" : {
+				"$eq" : "16"
+			}
+		},
+		"winningPlan" : {
+			"stage" : "FETCH",
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"keyPattern" : {
+					"users.userID" : 1
+				},
+				"indexName" : "users.userID_1",
+				"isMultiKey" : true,
+				"direction" : "forward",
+				"indexBounds" : {
+					"users.userID" : [
+						"[\"16\", \"16\"]"
+					]
+				}
+			}
+		},
+		"rejectedPlans" : [ ]
+	},
+	"executionStats" : {
+		"executionSuccess" : true,
+		"nReturned" : 50,
+		"executionTimeMillis" : 64,
+		"totalKeysExamined" : 50,
+		"totalDocsExamined" : 50,
+		"executionStages" : {
+			"stage" : "FETCH",
+			"nReturned" : 50,
+			"executionTimeMillisEstimate" : 70,
+			"works" : 51,
+			"advanced" : 50,
+			"needTime" : 0,
+			"needFetch" : 0,
+			"saveState" : 1,
+			"restoreState" : 1,
+			"isEOF" : 1,
+			"invalidates" : 0,
+			"docsExamined" : 50,
+			"alreadyHasObj" : 0,
+			"inputStage" : {
+				"stage" : "IXSCAN",
+				"nReturned" : 50,
+				"executionTimeMillisEstimate" : 70,
+				"works" : 51,
+				"advanced" : 50,
+				"needTime" : 0,
+				"needFetch" : 0,
+				"saveState" : 1,
+				"restoreState" : 1,
+				"isEOF" : 1,
+				"invalidates" : 0,
+				"keyPattern" : {
+					"users.userID" : 1
+				},
+				"indexName" : "users.userID_1",
+				"isMultiKey" : true,
+				"direction" : "forward",
+				"indexBounds" : {
+					"users.userID" : [
+						"[\"16\", \"16\"]"
+					]
+				},
+				"keysExamined" : 50,
+				"dupsTested" : 50,
+				"dupsDropped" : 0,
+				"seenInvalidated" : 0,
+				"matchTested" : 0
+			}
+		}
+	},
+	"serverInfo" : {
+		"host" : "mahi-ubuntu-14",
+		"port" : 27017,
+		"version" : "3.0.12",
+		"gitVersion" : "33934938e0e95d534cebbaff656cde916b9c3573"
+	},
+	"ok" : 1
+}
+
+
+==========================================================================================
+

@@ -1,0 +1,237 @@
+A borrower order will have "Id" and "OrderProperties". OrderProperties will be an arbitrary object that could contain any structure possible with JSON.
+
+A lender order will have "Id" and "Predicates". Predicates could be one of the following:
+{
+	"ExpressionType": "Equals"|"GreaterThan"|"LessThan",
+	"LeftOperand": propertyExpression,
+	"RightOperand": valueExpression
+},
+{
+	"ExpressionType": "Or"|"And",
+	"LeftOperand": predicate,
+	"RightOperand": predicate
+},
+{
+	"ExpressionType": "Not",
+	"Child": predicate
+}
+
+a propertyExpression will be of the form:
+{
+	"Value":string
+}
+The string is a reference for a property in the borrower order 'OrderProperties'. This should conform to jsonpath http://jsonpath.com/. There are many libraries for different languages that support json path.
+
+a valueExpression is any constant such as string, bool, int that can be used in the evaluation of the predicate.
+
+Predicate example:		
+{
+	"ExpressionType": "Not",
+	"Child": {
+		"ExpressionType": "Or",
+		"LeftOperand": {"ExpressionType": "Equals", "LeftOperand": "Borrower.Name", "RightOperand": "Kym"},
+		"RightOperand": {
+			"ExpressionType": "And",
+			"LeftOperand": {"ExpressionType": "GreaterThan", "LeftOperand": "Borrower.Age", "RightOperand": 18},
+			"RightOperand": {"ExpressionType": "LessThan", "LeftOperand": "LoanAmount", "RightOperand": 10000}
+		}
+	}
+}
+
+Match examples.
+
+Example 1. Order should match given predicates match - note, the outermost predicate array implies a wrapping 'And' predicate
+Current borrower orders:
+[{
+	"Id": 1,
+	"OrderProperties": {
+		"Purpose": "Car",
+		"Income": {
+			"GrossAnnual": 50000
+		}
+	}
+}]
+
+Current lender orders:
+[]
+
+Lender order placed:
+{
+	"Id": 2,
+	"Predicates": [
+		{
+			"LeftOperand": {"Value":"Purpose"},
+			"RightOperand": {"Value":"Car"},
+			"ExpressionType": "Equals"
+		},
+		{
+			"LeftOperand": {"Value":"Income.GrossAnnual"},
+			"RightOperand": {"Value":40000},
+			"ExpressionType": "GreaterThan"
+		}
+	]
+}
+
+So in the above if the Purpose is Car and Income.GrossAnnual is greater than 40000 the predicates will match.
+
+Result:
+[{
+	"BorrowerOrderId": 1,
+	"LenderOrderId": 2,
+}]
+
+Example 2. Order should not match if the predicates don't match
+Current borrower orders:
+[{
+	"Id": 1,
+	"OrderProperties": {
+		"Purpose": "Car",
+		"Income": {
+			"GrossAnnual": 50000
+		}
+	}
+}]
+
+Current lender orders:
+[]
+
+Lender order placed:
+{
+	"Id": "2",
+	"Predicates": [
+		{
+			"LeftOperand": {"Value":"Purpose"},
+			"RightOperand": {"Value":"Car"},
+			"ExpressionType": "Equals"
+		},
+		{
+			"LeftOperand": {"Value":"Income.GrossAnnual"},
+			"RightOperand": {"Value":60000},
+			"ExpressionType": "GreaterThan"
+		}
+	]
+}
+
+Result:
+[]
+
+Example 3. Or predicate - 1 condition matched
+Current borrower orders:
+[{
+	"Id": 1,
+	"OrderProperties": {
+		"Purpose": "Car",
+		"Income": {
+			"GrossAnnual": 50000
+		}
+	}
+}]
+
+Current lender orders:
+[]
+
+Lender order placed:
+{
+	"Id": 2,
+	"Predicates": [
+		{
+			"ExpressionType": "Or",
+			"LeftOperand": {
+				"ExpressionType": "Equals",
+				"LeftOperand": {"Value":"Purpose"},
+				"RightOperand": {"Value":"Car"},				
+			},
+			"RightOperand": {
+				"LeftOperand": {"Value":"Income.GrossAnnual"},
+				"RightOperand": {"Value":60000},
+				"ExpressionType": "GreaterThan"
+			}
+		}
+	]
+}
+
+Result:
+[{
+	"BorrowerOrderId": 1,
+	"LenderOrderId": 2,
+}]
+
+Example 4. Multiple matches
+Current borrower orders:
+[{
+	"Id": 1,
+	"OrderProperties": {
+		"Purpose": "Car",
+		"Income": {
+			"GrossAnnual": 50000
+		}
+	}
+},{
+	"Id": 2,
+	"OrderProperties": {
+		"Purpose": "Business",
+		"Income": {
+			"GrossAnnual": 60000
+		}
+	}
+}
+]
+
+Current lender orders:
+[]
+
+Lender order placed:
+{
+	"Id": 3,
+	"Predicates": [
+		{
+			"LeftOperand": {"Value":"Income.GrossAnnual"},
+			"RightOperand": {"Value":40000},
+			"ExpressionType": "GreaterThan"
+		}
+	]
+}
+
+Result:
+[{
+	"BorrowerOrderId": 1,
+	"LenderOrderId": 3,
+},
+{
+	"BorrowerOrderId": 2,
+	"LenderOrderId": 3,
+}]
+
+Example 5. Borrower order placed
+Current borrower orders:
+[]
+
+Current lender orders:
+[{
+	"Id": 1,
+	"Predicates": [
+		{
+			"LeftOperand": {"Value":"Income.GrossAnnual"},
+			"RightOperand": {"Value":40000},
+			"ExpressionType": "GreaterThan"
+		}
+	]
+}]
+
+Borrower order placed:
+{
+	"Id": 2,
+	"OrderProperties": {
+		"Purpose": "Car",
+		"Income": {
+			"GrossAnnual": 50000
+		}
+	}
+}
+
+Result:
+[{
+	"BorrowerOrderId": 1,
+	"LenderOrderId": 2,
+}]
+

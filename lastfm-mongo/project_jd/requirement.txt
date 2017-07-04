@@ -1,0 +1,34 @@
+Project Description:
+
+load the complete data on MongoDB and set up proper indexes that will be
+used by the target queries. Design and implement all target queries. You may implement a
+query using shell command, a combination of JavaScript and shell command or as
+Python/Java program. For each query (or sub query), report execution statistics such as:
+which index is used, how many documents are examined to answer this query
+
+http://grouplens.org/datasets/hetrec-2011/
+
+For each schema version, make sure you utilize features provided by the storage system such as indexing, aggregation, ordering, filtering and so on. Please note that your schema may deviate a lot from the relational structure of the original data set. You can discard IDs if you find they are not useful. You can duplicate data if you find that helps with certain queries. do not present a schema that is an exact copy of the relational structure in the original data set.
+
+----------------------------------------------------------------------
+Target Queries  - Simple query 
+• given a user id, find all artists the user’s friends listen. 
+• given an artist name, find the most recent 10 tags that have been assigned to it. 
+• given an artist name, find the top 10 users based on their respective listening counts of this
+artist. Display both the user id and the listening count 
+• given a user id, find the most recent 10 artists the user has assigned tag to.
+
+
+ Complex queries 
+
+• find the top 5 artists ranked by the number of users listening to it :
+
+db.artists.aggregate([{$sort: {no_of_users:1}},{$limit : 5}])
+
+  
+• given an artist name, find the top 20 tags assigned to it. The tags are ranked by the number of times it has been assigned to this artist
+• given a user id, find the top 5 artists listened by his friends but not him. We rank artists bythe sum of friends’ listening counts of the artist. 
+• given an artist name, find the top 5 similar artists. Here similarity between a pair of artists is defined by the number of unique users that have listened both. The higher the number, the more similar the two artists are.
+
+-----------------------------------------------------------------------
+

@@ -1,0 +1,59 @@
+Create hash maps for each property to the Ids of borrower with that property
+Ex: { id:1, salary:50000, city: bangalore}
+{ id:2 salary:50000, city: hyderabad}
+{id:3 salary:45000, city: bangalore}
+
+The hash maps for these borrowers will as follows:
+Salary-50000: [1,2]
+Salary-45000:[3]
+City-bangalore:[1,3]
+City-hyderabad:[2]
+
+This way we have to generate hash tables for all the borrower data.
+It will fast querying the data stored in hash tables.
+Here giving priority to speed rather than memory will improve performance. How??? Here it is.
+
+When a lender order is placed, query the above hash tables for matching each predicate and apply the union or intersection over the resulted lists of IDs
+
+Ex:
+Lender Order - 1:
+{ and :
+{ greater_than : { salary : 50000}}
+{ equals : { city : bangalore }
+}
+
+Here we have 3 predicates in total.
+Pred-1: get Ids whose salary greater than 50000
+Pred-2: get Ids whose city bangalore
+Pred-3: get intersection of results of both predicates.
+Return final result.
+
+If we have huge volume of data, we can create multiple processes or thread for the same task ie matching the order, once all threads or processes are done with their job, merge all results and return final result.
+
+This is for only given borrower orders, match them when lender order is placed.
+
+I am still working on the case of give lender orders, match them when borrower order is placed.
+
+This is one approach. I can think of more approaches if u give me some more time.
+
+
+===============================================================
+1. Load both the existing borrowers list and lenders list into memory. Initially one or both lists may/may not be empty.
+2. Generate evalutors for all lender orders, in fact, loading the lender orders into directly the objects called LenderEvalutor with operation match(BorrowerProfile)
+3. Also generate the BorrowerProfile object with operation match(LenderEvalutor)
+2. When borrower order is placed, submit this order to LenderEvalutor to check if it matches.
+3. When lender order is place, convert this into an LenderEvalutor, and submit this to all existing BorrowerProfiles to this, and get the matches.
+4. If there are large number of objects, we can use threads for evaluating.
+
+Some Object Oriented Classes would be:
+
+LenderOrder(id, predicates, etc)
+BorrowerOrder(id, properties, etc)
+LenderEvalutor(LenderID, expression_evaluator, match)
+BorrowerProfile(BorrowerID, expression_evaluator, match)
+List<LenderEvalutor>
+List<BorrowerProfile>
+ThreadPool
+
+This would be running on a back end server associated with database for storing the lender & borrower orders, this would be running as web service, and will be exposed as REST APIs
+The users can call these APIs to place the orders(lender/borrower).​

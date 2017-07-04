@@ -1,0 +1,144 @@
+
+-----------------------------------------------------------------------
+MongoDb Collections Schema:
+-----------------------------------------------------------------------
+ARTISTS_COLLECTIONS:
+{
+	"_id" : ObjectId("57f15525c311e919666f63d0"),
+	"no_of_users" : 3,
+	"name" : "MALICE MIZER",
+	"tags" : [
+		{
+			"timestamp" : "1222812000000",
+			"tagID" : "139",
+			"userID" : "1730",
+			"month" : "10",
+			"year" : "2008",
+			"day" : "1"
+		},
+		{
+			"timestamp" : "1222812000000",
+			"tagID" : "141",
+			"userID" : "1730",
+			"month" : "10",
+			"year" : "2008",
+			"day" : "1"
+		},
+		{
+			"timestamp" : "1222812000000",
+			"tagID" : "179",
+			"userID" : "1730",
+			"month" : "10",
+			"year" : "2008",
+			"day" : "1"
+		},
+		{
+			"timestamp" : "1222812000000",
+			"tagID" : "541",
+			"userID" : "1730",
+			"month" : "10",
+			"year" : "2008",
+			"day" : "1"
+		},
+		{
+			"timestamp" : "1146434400000",
+			"tagID" : "139",
+			"userID" : "1929",
+			"month" : "5",
+			"year" : "2006",
+			"day" : "1"
+		},
+		{
+			"timestamp" : "1201820400000",
+			"tagID" : "139",
+			"userID" : "1984",
+			"month" : "2",
+			"year" : "2008",
+			"day" : "1"
+		}
+	],
+	"url" : "http://www.last.fm/music/MALICE+MIZER",
+	"artistID" : "1",
+	"pictureURL" : "http://userserve-ak.last.fm/serve/252/10808.jpg",
+	"users" : [
+		{
+			"userID" : "34",
+			"weight" : "212"
+		},
+		{
+			"userID" : "274",
+			"weight" : "483"
+		},
+		{
+			"userID" : "785",
+			"weight" : "76"
+		}
+	]
+}
+
+
+
+TAGS COLLECTION:
+
+"tags":[
+ {"_id" : ObjectId("57f15523c311e919666efca4"), "tagID" : "4", "tagValue" : BinData(0,"YmxhY2sgbWV0YWw=")},
+ {"_id" : ObjectId("57f15523c311e919666efca4"), "tagID" : "4", "tagValue" : BinData(0,"YmxhY2sgbWV0YWw=")}
+]
+
+USER_COLLECTION:
+"users" : {
+	"_id" : ObjectId("57f15529c311e919666f75dc"),
+	"friends" : [
+		"113",
+		"1229",
+		"1682",
+		"1948",
+		"2042"
+	],
+	"userID" : "1401",
+	"artists" : [		
+		{
+			"artistID" : "1872",
+			"weight" : "1212",
+			"tags" : [
+				{
+					"timestamp" : "1217541600000",
+					"tagID" : "159",
+					"year" : "2008",
+					"day" : "1",
+					"month" : "8"
+				}
+			]
+		},
+		{
+			"artistID" : "3909",
+			"weight" : "1726",
+			"tags" : [ ]
+		},
+
+		{
+			"artistID" : "13296",
+			"weight" : "2646",
+			"tags" : [
+				{
+					"timestamp" : "1217541600000",
+					"tagID" : "723",
+					"year" : "2008",
+					"day" : "1",
+					"month" : "8"
+				}
+			]
+		},
+
+	]
+}
+	
+
+=====================================
+Indexes Created:
+
+db.tags.createIndex({"tagID":1},{unique:true})
+db.artists.createIndex({"artistID":1},{unique:true})
+db.artists.createIndex({"name":1},{unique:true})
+db.users.createIndex({"userID":1},{unique:true})
+db.artists.createIndex({"users.userID": 1})
