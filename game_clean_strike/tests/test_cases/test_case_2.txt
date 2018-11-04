@@ -1,0 +1,14 @@
+INPUT:
+TURNS 10
+P1 6
+P2 3
+P1 4
+P2 1
+P1 5
+P2 5
+P1 4
+P2 2
+P1 1
+P2 1
+OUTPUT
+Result: Winner - P2. Final Scores: 1 5

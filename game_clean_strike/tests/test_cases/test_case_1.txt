@@ -1,0 +1,10 @@
+INPUT:
+TURNS 6
+P1 1
+P2 1
+P1 2
+P2 4
+P1 3
+P2 1
+OUTPUT:
+Result: Winner - P1. Final Scores: 6 0

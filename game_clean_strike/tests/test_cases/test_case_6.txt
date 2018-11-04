@@ -1,0 +1,20 @@
+INPUT:
+TURNS 16
+P1 1
+P2 1
+P1 3
+P2 2
+P1 6
+P2 1
+P1 6
+P2 6
+P1 6
+P2 5
+P1 4
+P2 1
+P1 4
+P2 1
+P1 4
+P2 2
+OUTPUT:
+Result: Winner - P2. Final Scores: 0 6

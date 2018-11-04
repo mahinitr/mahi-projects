@@ -1,0 +1,13 @@
+INPUT:
+TURNS 9
+P1 1
+P2 1
+P1 5
+P2 1
+P1 1
+P2 1
+P1 1
+P2 1
+P1 1
+OUTPUT:
+Result: Draw. Final Scores: 3 4
