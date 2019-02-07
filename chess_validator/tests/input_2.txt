@@ -1,0 +1,29 @@
+Board
+WR WH WB WQ WK WB WH WR
+WP WP WP WP WP WP WP WP
+-- -- -- -- -- -- -- --
+-- -- -- -- -- -- -- --
+-- -- -- -- -- -- -- --
+-- -- -- -- -- -- -- --
+BP BP BP BP BP BP BP BP
+BR BH BB BQ BK BB BH BR
+Moves
+WP 12 22
+BP 60 64
+BH 71 50
+WQ 03 30
+BP 60 40
+WH 01 20
+WQ 30 52
+BP 63 52
+BP 62 52
+BQ 73 47
+BQ 73 13
+BP 72 61
+BP 62 51
+BP 62 52
+BQ 13 31
+BQ 31 13
+BQ 13 33
+WP 15 33
+BQ 31 39
