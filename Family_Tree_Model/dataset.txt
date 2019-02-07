@@ -1,0 +1,42 @@
+ADD_TO_FAMILY Shan king
+ADD_TO_FAMILY Anga wife of Shan
+ADD_TO_FAMILY Ish son of Shan
+ADD_TO_FAMILY Chit son of Shan
+ADD_TO_FAMILY Ambi wife of Chit
+ADD_TO_FAMILY Drita son of Chit
+ADD_TO_FAMILY Vrita son of Chit
+ADD_TO_FAMILY Jaya wife of Drita
+ADD_TO_FAMILY Jata son of Drita
+ADD_TO_FAMILY Driya daughter of Drita
+ADD_TO_FAMILY Mnu husband of Driya
+ADD_TO_FAMILY Vich son of Shan
+ADD_TO_FAMILY Lika wife of Vich
+ADD_TO_FAMILY Vila son of Vich
+ADD_TO_FAMILY Chika daughter of Vich
+ADD_TO_FAMILY Jnki wife of Vila
+ADD_TO_FAMILY Lavnya daughter of Vila
+ADD_TO_FAMILY Gru husband of Lavnya
+ADD_TO_FAMILY Kpila husband of Chika
+ADD_TO_FAMILY Satya daughter of Shan
+ADD_TO_FAMILY Vyan husband of Satya
+ADD_TO_FAMILY Satvy daughter of Satya
+ADD_TO_FAMILY Savya son of Satya
+ADD_TO_FAMILY Saayan son of Satya
+ADD_TO_FAMILY Asva husband of Satvy
+ADD_TO_FAMILY Krpi wife of Savya
+ADD_TO_FAMILY Kriya son of Savya
+ADD_TO_FAMILY Mina wife of Saayan
+ADD_TO_FAMILY Misa son of Saayan
+
+GET_RELATIONSHIP Ish Father
+GET_RELATIONSHIP Driya Mother
+GET_RELATIONSHIP Vich Son
+GET_RELATIONSHIP Vyan Brother-In-Law
+GET_RELATIONSHIP Satvy Sister-In-Law
+GET_RELATIONSHIP Kriya Maternal-Uncle
+GET_RELATIONSHIP Misa Paternal-Uncle
+GET_RELATIONSHIP Gru Spouse
+GET_RELATIONSHIP Ish Spouse
+GET_RELATIONSHIP Saayan Sister
+GET_RELATIONSHIP Satvy Cousin
+GET_RELATIONSHIP Shan Grand-Son
