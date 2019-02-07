@@ -9,33 +9,28 @@ CONFIG_FILE = "game_config.json"
 
 class Game:
 
-    def __init__(self):
-        self.game_config = {}
+    def __init__(self, b_coins, r_coins, no_players):
+        self.b_coins = b_coins
+        self.r_coins = r_coins
+        self.no_players = no_players
         self.board = None
         self.outcome_factory = None
         self.players = []
-        self.load_config()
         self.current_player = 1
         self.is_running = True
         self.winner = None
         self.is_game_draw = False
 
-    def load_config(self):
-        try:
-            with open(CONFIG_FILE) as fp:
-                self.game_config = json.load(fp)
-        except:
-            raise Exception("Error: Failed to load game config")
+    def start(self):
+        self.board = Board(self.b_coins, self.r_coins)
+        for i in range(0, self.no_players):
+            self.players.append(Player())
+        
 
     def init_game(self, input_outcomes=[]):
-        b_coins = self.game_config["black_coins"]
-        r_coins = self.game_config["red_coins"]
-        no_players = self.game_config["no_of_players"]
         load_from = self.game_config["load_input_from"]
         self.in_loader = InputLoader(load_from, input_outcomes)
         self.board = Board(b_coins, r_coins)
-        for i in range(0, no_players):
-            self.players.append(Player())
         self.outcome_factory = OutcomeFactory()
         self.outcome_factory.load_outcomes()
         return True
