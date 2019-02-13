@@ -19,17 +19,17 @@ class Relation:
     SISTER = "sister"
     CHILDREN = "children"
 
-    BROTHER_IN_LAW = "brother-in-law"
-    SISTER_IN_LAW = "sister-in-law"
+    BROTHER_IN_LAW = "brother_in_law"
+    SISTER_IN_LAW = "sister_in_law"
     COUSIN = "cousin"
 
-    MATERNAL_UNCLE = "maternal-uncle"
-    MATERNAL_AUNT = "maternal-aunt"
-    PATERNAL_UNCLE = "paternal-uncle"
-    PATERNAL_AUNT = "paternal-aunt"
+    MATERNAL_UNCLE = "maternal_uncle"
+    MATERNAL_AUNT = "maternal_aunt"
+    PATERNAL_UNCLE = "paternal_uncle"
+    PATERNAL_AUNT = "paternal_aunt"
 
-    GRAND_SON = "grand-son"
-    GRAND_DAUGHTER = "grand-daughter"
+    GRAND_SON = "grand_son"
+    GRAND_DAUGHTER = "grand_daughter"
 
 class Status:
     ADD_SUCCESS = "ADDITION_SUCCEEDED"
