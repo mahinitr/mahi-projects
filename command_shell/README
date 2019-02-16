@@ -1,0 +1,11 @@
+This is the simulator for Command Shell.
+
+The supported commands are:
+
+ls
+ls -r
+pwd
+mkdir <dir_name>
+cd <dir_name>
+touch <file_name>
+quit
